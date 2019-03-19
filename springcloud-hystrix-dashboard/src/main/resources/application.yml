@@ -1,0 +1,28 @@
+spring: 
+  profiles:
+    active: dev
+  application:
+    name: hystrix-dashboard
+
+management:
+  security:
+    enabled: false
+          
+logging:
+  config: classpath:logback-boot.xml
+  path: /project/logs/microservice-springcloud/hystrix-dashboard
+  
+---
+spring:
+  profiles: dev
+    
+server:
+  port: 9001
+  
+eureka:
+  client: 
+    service-url: 
+      defaultZone: http://127.0.0.1:7001/eureka/
+  instance: 
+    instance-id: hystrix-dashboard-01
+    prefer-ip-address: true
